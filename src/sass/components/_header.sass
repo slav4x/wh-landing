@@ -1,1 +1,56 @@
-
+.header
+	position: absolute
+	top: 0
+	height: 52px
+	z-index: 10
+	color: var(--color-white)
+	width: 100%
+	.container
+		@include flexbox
+		align-items: center
+		justify-content: space-between
+		height: 100%
+	&-logo
+		position: relative
+		z-index: 5
+	&-nav
+		@include flexbox
+		align-items: center
+		justify-content: center
+		gap: 36px
+		font-size: 13px
+		font-weight: 500
+		line-height: 1.5
+		letter-spacing: 0.02em
+		text-transform: uppercase
+		position: absolute
+		left: 0
+		right: 0
+	&-schedule
+		@include flexbox
+		align-items: center
+		position: relative
+		z-index: 5
+		gap: 6px
+		&::before
+			content: '·'
+			display: block
+			font-size: 14px
+			line-height: 1.1
+		&__status
+			order: -1
+			font-size: 13px
+			font-weight: 500
+			line-height: 1.1
+			letter-spacing: -0.02em
+			padding: 4px 6px
+			text-transform: uppercase
+			background: var(--color-white)
+			color: var(--color-black)
+			border-radius: 4px
+			&.open
+				background: var(--color-accent)
+		&__time
+			font-size: 14px
+			line-height: 1.1
+			line-height: 1.5
