@@ -32,3 +32,29 @@ input, textarea
     padding: 0 20px
     position: relative
     z-index: 5
+
+.main
+    @include flexbox
+    flex-direction: column
+    align-items: flex-start
+    gap: 150px
+
+.section
+    width: 100%
+    &-heading
+        @include flexbox
+        flex-direction: column
+        align-items: flex-start
+        gap: 32px
+        padding-bottom: 70px
+        &__title
+            font-size: 90px
+            line-height: 1
+            font-weight: 400
+            font-family: 'PanamaMonospace', sans-serif
+            text-transform: uppercase
+        &__description
+            line-height: 1.5
+        &--right
+            max-width: 980px
+            margin-left: calc((100% / 12) * 5)
