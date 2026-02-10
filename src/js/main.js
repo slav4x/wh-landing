@@ -6,4 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
       video.currentTime = 2;
     });
   });
+
+  new Splide('.backyard-carousel', {
+    type: 'loop',
+    perPage: 1,
+    focus: 0,
+    omitEnd: true,
+    arrows: false,
+  }).mount();
 });
