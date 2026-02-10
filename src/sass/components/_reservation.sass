@@ -1,0 +1,47 @@
+.reservation
+	height: 100svh
+	position: relative
+	overflow: hidden
+	background: var(--color-black)
+	color: var(--color-white)
+	background: linear-gradient(270deg, rgba(0, 0, 0, 0) 56.3%, rgba(0, 0, 0, 0.44) 79.64%)
+	.container
+		position: initial
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		justify-content: center
+		height: 100%
+	&-video
+		position: absolute
+		top: 0
+		left: 0
+		z-index: -1
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: center
+	.section-heading
+		max-width: 900px
+		margin: 0 auto 44px
+		padding: 0
+	&-buttons
+		@include flexbox
+		align-items: center
+		justify-content: center
+		gap: 8px
+		width: 100%
+		z-index: 2000
+		&.is-fixed
+			position: fixed
+			left: 0
+			right: 0
+			bottom: 32px
+		&.is-static
+			position: relative
+			bottom: auto
+	&-tg
+		width: 58px
+		height: 58px
+		border-radius: 100%
+		background: var(--color-accent) url("data:image/svg+xml,%3Csvg width='28' height='24' viewBox='0 0 28 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.509 0.32993C25.0655 -0.0516713 24.3689 -0.106271 23.6487 0.187129H23.6475C22.89 0.49553 2.20499 9.49796 1.36292 9.86576C1.20976 9.91976 -0.127842 10.4262 0.00993972 11.5542C0.132938 12.5712 1.20799 12.9924 1.33927 13.041L6.59804 14.868C6.94693 16.0464 8.23309 20.394 8.51752 21.3228C8.69492 21.9018 8.98409 22.6626 9.49086 22.8192C9.93555 22.9932 10.3779 22.8342 10.6641 22.6062L13.8792 19.5804L19.0694 23.6874L19.1929 23.7624C19.5454 23.9208 19.883 24 20.2053 24C20.4543 24 20.6932 23.9526 20.9214 23.8578C21.699 23.5338 22.0101 22.782 22.0426 22.6968L25.9194 2.25054C26.1559 1.15853 25.8272 0.602931 25.509 0.32993ZM11.2359 15.5988L9.46189 20.3988L7.68787 14.3988L21.2886 4.19874L11.2359 15.5988Z' fill='black'/%3E%3C/svg%3E%0A") no-repeat center
