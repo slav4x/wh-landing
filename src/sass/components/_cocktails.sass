@@ -1,0 +1,28 @@
+.cocktails
+	.section-heading
+		max-width: 770px
+		margin: 0 auto
+	&-grid
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+	&-image
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+			object-position: center
+		&--big
+			height: 810px
+			width: calc((100% / 12) * 4.5)
+		&--small
+			height: 450px
+			width: calc((100% / 12) * 2.5)
+			margin-top: auto
+	&-text
+		margin: auto
+		max-width: 360px
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		gap: 24px
