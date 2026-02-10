@@ -70,11 +70,10 @@ export function js() {
 }
 
 export function libsJs() {
-  // return src()
-  return;
-  // .pipe(gulpIf(isProd, terser()))
-  // .pipe(concat(isProd ? 'libs.min.js' : 'libs.js'))
-  // .pipe(dest('app/js'));
+  return src(['src/js/vendor/scroller.browser.js'])
+    .pipe(gulpIf(isProd, terser()))
+    .pipe(concat(isProd ? 'libs.min.js' : 'libs.js'))
+    .pipe(dest('app/js'));
 }
 
 export function img() {

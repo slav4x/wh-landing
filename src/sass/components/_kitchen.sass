@@ -89,3 +89,56 @@
 							opacity: 1
 					&-text
 						bottom: 20px
+	&-more
+		counter-reset: kitchenMoreItem
+		.section-heading
+			text-align: center
+			max-width: 330px
+			margin: 0 auto
+		.scroller
+			&.has-left-border .scroller-container::before,
+			&.has-right-border .scroller-container::after,
+			.scroller-scrollbar
+				display: none !important
+		&__grid
+			display: flex
+			flex-wrap: nowrap
+			gap: 4px
+		&__item
+			min-width: 380px
+			cursor: pointer
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 24px
+			counter-increment: kitchenMoreItem
+			&::after
+				content: counter(kitchenMoreItem, decimal-leading-zero)
+				display: block
+				width: 100%
+				text-align: center
+				font-size: 16px
+				line-height: 1
+				letter-spacing: 0.04em
+				font-family: 'PanamaMonospace', sans-serif
+			&-title
+				width: 100%
+				text-transform: uppercase
+				font-size: 14px
+				font-weight: 500
+				text-align: center
+				line-height: 1.1
+				letter-spacing: -0.02em
+			&-image
+				width: 100%
+				height: 570px
+				overflow: hidden
+				pointer-events: none
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					object-position: center
+					transition: var(--transition-ms)
+			&:hover .kitchen-more__item-image img
+				transform: scale(1.2)
