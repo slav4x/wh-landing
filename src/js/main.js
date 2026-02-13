@@ -14,4 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     omitEnd: true,
     arrows: false,
   }).mount();
+
+  Fancybox.bind('[data-fancybox]', {
+    dragToClose: false,
+    autoFocus: false,
+    placeFocusBack: false,
+    Thumbs: false,
+    Images: {
+      zoom: false,
+    },
+    Iframe: {
+      attr: {
+        allow: 'autoplay; fullscreen; picture-in-picture; screen-wake-lock',
+      },
+    },
+  });
 });

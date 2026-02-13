@@ -4,26 +4,31 @@
 {% block content %}
 
 <section class="section hero">
+	{% include 'components/_header.html' %}
 	<video class="hero-video" preload="" playsinline="" autoplay="" loop="" muted="">
         <source src="videos/hero.mp4" type="video/mp4">
     </video>
-	<div class="container">
-		<ul class="hero-contacts">
-			<li>
-				<span>Находимся по адресу</span>
-				<p>Добролюбова 3В</p>
-			</li>
-			<li>
-				<span>Позвонить</span>
-				<p>+7 932 120 12 08</p>
-			</li>
-		</ul>
-		<div class="hero-content">
-			<div class="hero-description">Listening bar в центре Екатеринбурга!</div>
-			<h1 class="hero-title">Свежий твист на кухни Азии и авторская барная карта.</h1>
+	<div class="hero-main">
+		<div class="container">
+			<ul class="hero-contacts">
+				<li>
+					<span>Находимся по адресу</span>
+					<p>Добролюбова 3В</p>
+				</li>
+				<li>
+					<span>Позвонить</span>
+					<p>+7 932 120 12 08</p>
+				</li>
+			</ul>
+			<div class="hero-content">
+				<div class="hero-description">Listening bar в центре Екатеринбурга!</div>
+				<h1 class="hero-title">Свежий твист на кухни Азии и авторская барная карта.</h1>
+			</div>
 		</div>
 	</div>
 </section>
+
+<main class="main">
 
 <section class="section interior">
 	<div class="container">
@@ -293,5 +298,44 @@
 		<a href="#" class="btn btn-white">Открыть в яндекс картах</a>
 	</div>
 </section>
+
+</main>
+
+<script src="https://api-maps.yandex.ru/v3/?apikey=f65f7c9a-0489-4890-b61d-c6c62212c4b7&lang=ru_RU"></script>
+<script>
+	initMap();
+
+	async function initMap() {
+		await ymaps3.ready;
+
+		const { YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer } = ymaps3;
+
+		const map = new YMap(document.querySelector('.contacts-map'), {
+			location: {
+				center: [60.604293, 56.833664],
+				zoom: 15,
+			},
+			behaviors: ['drag', 'dblClick']
+		});
+
+		const customization = await fetch('./customization.json').then((r) => r.json());
+		map.addChild(new YMapDefaultSchemeLayer({ theme: 'dark', customization }));
+		map.addChild(new YMapDefaultFeaturesLayer());
+
+		const markerElement = document.createElement('div');
+		markerElement.className = 'contacts-map__pin';
+		markerElement.innerHTML = `<img src="img/svg/pin.svg" alt="">`;
+
+		const marker = new YMapMarker(
+			{
+				coordinates: [60.604293, 56.833664],
+				draggable: true,
+			},
+			markerElement
+		);
+
+		map.addChild(marker);
+	}
+</script>
 
 {% endblock %}
