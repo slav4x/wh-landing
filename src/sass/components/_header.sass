@@ -26,6 +26,26 @@
 		position: absolute
 		left: 0
 		right: 0
+		li
+			a
+				position: relative
+				transition: var(--transition-ms)
+				span
+					display: block
+				span:nth-child(2)
+					position: absolute
+					top: 0
+					left: 0
+					bottom: 0
+					width: 0%
+					transition: var(--transition-ms)
+					background: var(--color-white)
+					color: var(--color-black)
+					white-space: nowrap
+					overflow: hidden
+				&:hover
+					span:nth-child(2)
+						width: 100%
 	&-schedule
 		@include flexbox
 		align-items: center
