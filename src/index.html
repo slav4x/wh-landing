@@ -2,9 +2,9 @@
 {% set site_title = 'Главная' %}
 
 {% block content %}
+	{% include 'components/_header.html' %}
 
 <section class="section hero">
-	{% include 'components/_header.html' %}
 	<video class="hero-video" preload="" playsinline="" autoplay="" loop="" muted="">
         <source src="videos/hero.mp4" type="video/mp4">
     </video>
@@ -13,11 +13,11 @@
 			<ul class="hero-contacts">
 				<li>
 					<span>Находимся по адресу</span>
-					<p>Добролюбова 3В</p>
+					<p><a href="https://yandex.ru/maps/-/CPUMbZ2R" target="_blank">Добролюбова 3В</a></p>
 				</li>
 				<li>
 					<span>Позвонить</span>
-					<p>+7 932 120 12 08</p>
+					<p><a href="tel:+7 932 120 12 08">+7 932 120 12 08</a></p>
 				</li>
 			</ul>
 			<div class="hero-content">
@@ -176,27 +176,11 @@
 				<p class="section-heading__description">Место для встречи с друзьями, ужина тет-а-тет или шумного эвента. И все это под звездами!</p>
 			</div>
 			<div class="backyard-grid">
-				<div class="backyard-carousel splide">
-					<div class="splide__track">
-						<div class="splide__list">
-							<div class="splide__slide">
-								<img src="img/backyard-carousel.jpg" alt="" loading="lazy">
-								<div class="backyard-carousel__text">К атмосфере по вечерам подключаются DJs, а бармены начинают все чаще браться за бокалы</div>
-							</div>
-							<div class="splide__slide">
-								<img src="img/backyard-carousel.jpg" alt="" loading="lazy">
-								<div class="backyard-carousel__text">К атмосфере по вечерам подключаются DJs, а бармены начинают все чаще браться за бокалы</div>
-							</div>
-							<div class="splide__slide">
-								<img src="img/backyard-carousel.jpg" alt="" loading="lazy">
-								<div class="backyard-carousel__text">К атмосфере по вечерам подключаются DJs, а бармены начинают все чаще браться за бокалы</div>
-							</div>
-							<div class="splide__slide">
-								<img src="img/backyard-carousel.jpg" alt="" loading="lazy">
-								<div class="backyard-carousel__text">К атмосфере по вечерам подключаются DJs, а бармены начинают все чаще браться за бокалы</div>
-							</div>
-						</div>
-					</div>
+				<div class="backyard-video">
+					<video preload="" playsinline="" autoplay="" loop="" muted="">
+						<source src="videos/hero.mp4" type="video/mp4">
+					</video>
+					<div class="backyard-video__text">К атмосфере по вечерам подключаются DJs, а бармены начинают все чаще браться за бокалы</div>
 				</div>
 				<div class="backyard-image"><img src="img/backyard-image.jpg" alt=""></div>
 			</div>

@@ -70,7 +70,7 @@ export function js() {
 }
 
 export function libsJs() {
-  return src(['src/js/vendor/scroller.browser.js', 'src/js/vendor/splide.min.js', 'src/js/vendor/fancybox.umd.js'])
+  return src(['src/js/vendor/fancybox.umd.js', 'src/js/vendor/scroller.browser.js', 'src/js/vendor/lenis.min.js'])
     .pipe(gulpIf(isProd, terser()))
     .pipe(concat(isProd ? 'libs.min.js' : 'libs.js'))
     .pipe(dest('app/js'));
