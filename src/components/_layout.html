@@ -11,6 +11,9 @@
             const meta = document.querySelector('meta[name="viewport"]');
             meta.setAttribute('content', `user-scalable=no, width=${screen.width <= 420 ? 420 : 'device-width'}`);
         </script>
+		<link rel="preload" href="./fonts/HelveticaNeueCyr/HelveticaNeueCyr-Roman.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" href="./fonts/HelveticaNeueCyr/HelveticaNeueCyr-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" href="./fonts/PanamaMonospace/PanamaMonospace-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<title>{{ site_title }}</title>
 		<link rel="stylesheet" href="./css/libs.css?cb">
 		<link rel="stylesheet" href="./css/main.css?cb">
