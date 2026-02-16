@@ -2,9 +2,9 @@
 {% set site_title = 'Главная' %}
 
 {% block content %}
-	{% include 'components/_header.html' %}
 
 <section class="section hero">
+	{% include 'components/_header.html' %}
 	<video class="hero-video" preload="" playsinline="" autoplay="" loop="" muted="">
         <source src="videos/hero.mp4" type="video/mp4">
     </video>
@@ -33,7 +33,7 @@
 <section class="section interior">
 	<div class="container">
 		<div class="section-heading section-heading--right">
-			<h2 class="section-heading__title">Эстетичный интерьер как внутри, так и снаружи!</h2>
+			<h2 class="section-heading__title">Эстетичный<br> интерьер как внутри, так и снаружи!</h2>
 			<p class="section-heading__description">Декор и удобства в мелочах, чтобы незабываемо работать, ужинать, танцевать и собираться с друзьями!</p>
 		</div>
 		<div class="interior-grid">
@@ -299,7 +299,7 @@
 				center: [60.604293, 56.833664],
 				zoom: 15,
 			},
-			behaviors: ['drag', 'dblClick']
+			behaviors: [ 'none']
 		});
 
 		const customization = await fetch('./customization.json').then((r) => r.json());

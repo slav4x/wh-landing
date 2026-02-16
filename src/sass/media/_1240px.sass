@@ -1,1 +1,50 @@
 @media (max-width: 1240px)
+	.section
+		&-heading
+			&--right
+				max-width: 740px
+				margin-left: 0
+
+	.interior
+		&-card
+			&--medium
+				width: calc(((100% / 12) * 6) - 6px)
+			&--big
+				width: calc(((100% / 12) * 6) - 6px)
+
+	.kitchen
+		&-menus
+			&__item
+				width: calc(100% / 2 - 12px)
+
+	.cocktails
+		&-grid
+			position: relative
+		&-image
+			&--big
+				height: 620px
+				width: calc((100% / 12) * 7)
+			&--small
+				height: 320px
+				width: calc((100% / 12) * 3 + 20px)
+				position: absolute
+				bottom: -30px
+				left: -20px
+		&-text
+			margin-right: 0
+			width: calc((100% / 12) * 4)
+
+	.backyard
+		&-video
+			width: calc(((100% / 12) * 6) - 6px)
+		&-image
+			width: calc(((100% / 12) * 6) - 6px)
+
+	.events
+		&-grid
+			gap: 24px 12px
+		&-item
+			margin: 0 !important
+			width: calc((100% - 24px) / 3) !important
+			&__media
+				height: 360px !important
