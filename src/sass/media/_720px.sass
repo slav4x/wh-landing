@@ -1,0 +1,131 @@
+@media (max-width: 720px)
+	.hero
+		&-contacts
+			gap: 24px
+		&-title
+			font-size: 44px
+			letter-spacing: -.02em
+			font-weight: 500
+
+	.main
+		gap: 80px
+		padding-top: 80px
+
+	.section
+		&-heading
+			padding-bottom: 44px
+			&__title
+				font-size: 44px
+			&__title-md
+				font-size: 36px
+			&--center
+				align-items: flex-start
+				text-align: left
+
+	.interior
+		&-grid
+			gap: 24px
+		&-card
+			width: 100% !important
+			&--medium .interior-card__media
+				height: 500px
+			&--big .interior-card__media
+				height: 280px
+
+	.kitchen
+		.section-heading__title img
+			display: none
+		&-menus
+			gap: 12px
+			&__item
+				width: 100%
+				height: 420px
+				&-bg--hover
+					display: none
+		&-more
+			.section-heading
+				margin: 0
+				text-align: left
+			&__grid
+				padding: 0 20px
+				margin: 0 -20px
+				overflow: auto
+				&::-webkit-scrollbar
+					display: none
+			&__item
+				min-width: 340px
+				gap: 12px
+				&::after
+					text-align: left
+					font-size: 16px
+				&-title
+					font-size: 10px
+					text-align: left
+				&-image
+					height: 430px
+
+	.cocktails
+		&-image
+			&--big
+				height: 420px
+				width: 100%
+			&--small
+				height: 180px
+				width: calc((100% / 12) * 4.2 + 20px)
+				bottom: initial
+				top: 250px
+		&-text
+			width: calc((100% / 12) * 11)
+			margin: 0
+			margin-top: 32px
+			.section-heading__title-md
+				font-size: 24px
+			.section-heading__description
+				display: none
+
+	.feed
+		&-main
+			padding-top: 80px
+		&-grid
+			padding: 0 20px
+			margin: 0 -20px
+			overflow: auto
+			&::-webkit-scrollbar
+				display: none
+
+	.backyard
+		&-main
+			padding-top: 80px
+		&-image
+			display: none
+		&-video
+			width: 100%
+			height: 460px
+
+	.events
+		&-grid
+			padding: 0 20px
+			margin: 0 -20px
+			overflow: auto
+			flex-wrap: nowrap
+			&::-webkit-scrollbar
+				display: none
+		&-item
+			width: auto !important
+			min-width: 340px
+
+	.reservation
+		.section-heading
+			align-items: center
+			text-align: center
+
+	.footer
+		padding-bottom: 12px
+		&-fixed
+			position: relative
+			background: var(--color-accent)
+			mix-blend-mode: initial
+			color: var(--color-black)
+			justify-content: center
+			p:first-child
+				display: none
