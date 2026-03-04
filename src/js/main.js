@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroller-item').forEach((el) => el.classList.remove('scroller-item'));
   }
 
-  if (window.matchMedia('(max-width: 720px)')) {
+  if (window.innerWidth < 720) {
     removeScrollerDOM();
   }
 
@@ -157,4 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(block);
   })();
+
+  const twistItems = document.querySelectorAll('.twist-items li');
+  const twistMedias = document.querySelectorAll('.twist-media');
+
+  twistItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      const id = item.dataset.id;
+
+      twistItems.forEach((i) => i.classList.remove('active'));
+
+      twistMedias.forEach((m) => m.classList.remove('active'));
+
+      item.classList.add('active');
+
+      const media = document.querySelector(`.twist-media[data-id="${id}"]`);
+      if (media) media.classList.add('active');
+    });
+  });
 });
