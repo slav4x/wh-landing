@@ -1,6 +1,7 @@
 .reservation
 	height: 100svh
 	position: relative
+	z-index: 110
 	overflow: hidden
 	background: var(--color-black)
 	color: var(--color-white)
@@ -31,7 +32,12 @@
 		justify-content: center
 		gap: 8px
 		width: 100%
-		z-index: 2000
+		z-index: 90
+		&.fixed
+			position: fixed
+			bottom: 20px
+			left: 0
+			right: 0
 	&-tg
 		width: 58px
 		height: 58px
