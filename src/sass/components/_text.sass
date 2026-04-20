@@ -1,0 +1,31 @@
+.text
+	padding: 120px 0 80px
+	.header-logo,
+	.header-nav,
+	.header-schedule::before,
+	.header-schedule__time
+		filter: invert(1)
+	&-container
+		max-width: 900px
+		margin: 0 auto
+	&-title
+		font-family: "PanamaMonospace"
+		font-weight: 400
+		font-size: 72px
+		line-height: 1
+		text-transform: uppercase
+	&-content
+		margin-top: 30px
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		gap: 20px
+		line-height: 1.5
+		ul
+			list-style: disc
+			padding-left: 17px
+		ul, ol
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 20px
