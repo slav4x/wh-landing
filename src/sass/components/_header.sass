@@ -68,9 +68,32 @@
 			background: var(--color-white)
 			color: var(--color-black)
 			border-radius: 4px
+			position: relative
+			cursor: pointer
 			&.open
 				background: var(--color-accent)
+			&.close
+				background: #D80027
+				color: #fff
+			&:hover .header-schedule__tooltip
+				opacity: 1
 		&__time
 			font-size: 14px
 			line-height: 1.1
 			line-height: 1.5
+		&__tooltip
+			position: absolute
+			top: calc(100% + 14px)
+			left: 50%
+			transform: translateX(-50%)
+			background: #fff
+			border-radius: 12px
+			width: 190px
+			padding: 12px
+			font-size: 14px
+			line-height: 1
+			text-transform: none
+			font-weight: 400
+			opacity: 0
+			pointer-events: none
+			transition: var(--transition-ms)
