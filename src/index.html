@@ -323,19 +323,25 @@
 	async function initMap() {
 		await ymaps3.ready;
 
-		const { YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer } = ymaps3;
+		ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', [
+			'@yandex/ymaps3-default-ui-theme@latest'
+		]);
+
+		const { YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer, YMapControls } = ymaps3;
+		const { YMapZoomControl } = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
 		const map = new YMap(document.querySelector('.contacts-map'), {
 			location: {
 				center: [60.604293, 56.833664],
 				zoom: 15,
 			},
-			behaviors: [ 'none']
+			behaviors: [ 'zoom' ],
 		});
 
 		const customization = await fetch('./customization.json').then((r) => r.json());
 		map.addChild(new YMapDefaultSchemeLayer({ theme: 'dark', customization }));
 		map.addChild(new YMapDefaultFeaturesLayer());
+		map.addChild(new YMapControls({ position: 'right' }).addChild(new YMapZoomControl()));
 
 		const markerElement = document.createElement('div');
 		markerElement.className = 'contacts-map__pin';
@@ -344,7 +350,6 @@
 		const marker = new YMapMarker(
 			{
 				coordinates: [60.604293, 56.833664],
-				draggable: true,
 			},
 			markerElement
 		);
