@@ -1,4 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
+  (function initPopups() {
+    const popupSelector = '.popup';
+    const openAttr = 'data-popup-open';
+    const closeAttr = 'data-popup-close';
+    const popupAttr = 'data-popup';
+    const body = document.body;
+
+    function getPopup(name) {
+      if (!name) return null;
+
+      return document.querySelector(`${popupSelector}[${popupAttr}="${name}"]`) || document.getElementById(name);
+    }
+
+    function closePopups() {
+      document.querySelectorAll(`${popupSelector}.show`).forEach((popup) => popup.classList.remove('show'));
+      body.classList.remove('popup-open');
+    }
+
+    function openPopup(name) {
+      const popup = getPopup(name);
+
+      if (!popup) return;
+
+      closePopups();
+      popup.classList.add('show');
+      body.classList.add('popup-open');
+    }
+
+    document.addEventListener('click', (event) => {
+      const openTrigger = event.target.closest(`[${openAttr}]`);
+
+      if (openTrigger) {
+        event.preventDefault();
+        openPopup(openTrigger.getAttribute(openAttr));
+        return;
+      }
+
+      const closeTrigger = event.target.closest(`[${closeAttr}]`);
+
+      if (closeTrigger) {
+        event.preventDefault();
+        closePopups();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closePopups();
+      }
+    });
+  })();
+
   const kitchenVideosHover = document.querySelectorAll('.kitchen-menus__item-bg--hover');
   kitchenVideosHover.forEach((video) => {
     video.addEventListener('loadedmetadata', () => {
