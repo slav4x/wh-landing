@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+  (function initCookie() {
+    const cookie = document.querySelector('[data-cookie]');
+    const acceptButton = document.querySelector('[data-cookie-accept]');
+    const storageKey = 'cookieAccepted';
+
+    if (!cookie || !acceptButton) return;
+
+    if (window.localStorage.getItem(storageKey) === '1') {
+      return;
+    }
+
+    cookie.classList.add('show');
+
+    acceptButton.addEventListener('click', () => {
+      window.localStorage.setItem(storageKey, '1');
+      cookie.classList.remove('show');
+    });
+  })();
+
   (function initPopups() {
     const popupSelector = '.popup';
     const openAttr = 'data-popup-open';
