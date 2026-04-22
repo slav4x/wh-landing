@@ -20,6 +20,57 @@
 	<p>Design by: <a href="#" target="_blank">Cassari</a></p>
 </div>
 
+<div class="popup" data-popup="reserve">
+	<div class="popup-backdrop" data-popup-close></div>
+	<div class="popup-window">
+		<div class="popup-reserve-head">
+			<div class="popup-reserve-head__title">Бронирование стола</div>
+			<div class="popup-reserve-head__description">Позвоним вам в ближайшие 10 минут</div>
+			<div class="popup-close" data-popup-close></div>
+		</div>
+		<form action="#" class="popup-reserve-form">
+			<div class="popup-reserve-form__grid">
+				<label class="label label-date" data-datepicker>
+					<span class="label-title">Дата</span>
+					<input type="text" name="date" class="input" value="" readOnly data-datepicker-input />
+					<input type="hidden" name="date_iso" data-datepicker-value />
+					<div class="date-picker" data-datepicker-dropdown></div>
+				</label>
+				<div class="label">
+					<span class="label-title">Гостей</span>
+					<div class="stepper">
+						<button type="button" class="stepper-button stepper-button-minus"></button>
+						<input type="number" name="guests" class="input" value="1" min="1" max="12" />
+						<button type="button" class="stepper-button stepper-button-plus"></button>
+					</div>
+				</div>
+			</div>
+			<div class="label">
+				<span class="label-title">Время</span>
+				<div class="time" data-time-slots></div>
+			</div>
+			<div class="popup-reserve-form__grid popup-reserve-form-contacts">
+				<label class="label">
+					<span class="label-title">Как вас зовут</span>
+					<input type="text" name="name" class="input" placeholder="Ваше имя" />
+				</label>
+				<label class="label">
+					<span class="label-title">Телефон</span>
+					<input type="tel" name="phone" class="input masked" placeholder="+7 (000) 000-00-00" />
+				</label>
+			</div>
+			<label class="label">
+				<span class="label-title">Пожелания</span>
+				<textarea name="text" class="textarea" placeholder="Какое-нибудь пожелание" rows="4"></textarea>
+			</label>
+			<div class="popup-reserve-form__bottom">
+				<button type="submit" class="button">Забронировать</button>
+				<div class="popup-reserve-form__policy">Нажимая на кнопку “забронировать” вы соглашаетесь с <a href="/policy" target="_blank">политикой конфиденциальности</a></div>
+			</div>
+		</form>
+	</div>
+</div>
+
 <div class="cookie" data-cookie>
 	<img src="img/cookie.png" alt="" class="cookie-image">
 	<div class="cookie-title">У нас<br> есть куки!</div>

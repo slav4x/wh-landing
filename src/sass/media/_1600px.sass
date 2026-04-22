@@ -206,11 +206,33 @@
 			font-size: 80px
 
 	.popup
+		&-window
+			max-width: 500px
 		&-kitchen
 			&-window
 				max-width: 1000px
 			&-title
 				font-size: 90px
+		&-reserve
+			&-head
+				padding: 24px 24px 0
+				gap: 8px
+				&__title
+					font-size: 24px
+				&__description
+					font-size: 14px
+				.popup-close
+					top: 24px
+					right: 24px
+			&-form
+				padding: 48px 24px 24px
+				&__grid
+					gap: 16px
+					.label
+						&:last-child
+							max-width: 190px
+				&__policy
+					font-size: 13px
 
 	.cookie
 		padding: 16px
@@ -226,3 +248,21 @@
 			top: -48px
 			right: 16px
 			width: 90px
+
+	.label-title
+		font-size: 13px
+		margin-bottom: 8px
+
+	.input
+		height: 44px
+
+	.time
+		grid-template-columns: repeat(5, 1fr)
+		gap: 12px
+		&-item
+			span
+				height: 38px
+
+	.button
+		height: 48px
+		font-size: 16px
