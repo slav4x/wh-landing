@@ -373,9 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOvernightSchedule = schedule.closeHour < schedule.openHour;
       const isAfterMidnightShiftTail = isOvernightSchedule && currentHour <= schedule.closeHour;
       const currentHourOrder = isAfterMidnightShiftTail ? currentHour + 24 : currentHour;
-      const isOpenNow =
-        isToday &&
-        (isAfterMidnightShiftTail || (currentHour >= schedule.openHour && currentHour <= 23));
+      const isOpenNow = isToday && (isAfterMidnightShiftTail || (currentHour >= schedule.openHour && currentHour <= 23));
       const selectedTimeInput = timeContainer.querySelector('input:checked');
       const selectedTimeValue = selectedTimeInput ? selectedTimeInput.value : '';
 
@@ -509,6 +507,38 @@ document.addEventListener('DOMContentLoaded', () => {
     acceptButton.addEventListener('click', () => {
       window.localStorage.setItem(storageKey, '1');
       cookie.classList.remove('show');
+    });
+  })();
+
+  (function initReservePopup() {
+    const reservePopup = document.querySelector('.popup[data-popup="reserve"]');
+    const reserveForm = reservePopup ? reservePopup.querySelector('.popup-reserve-form') : null;
+
+    if (!reservePopup || !reserveForm) return;
+
+    function resetReservePopup() {
+      const submitButton = reserveForm.querySelector('button.button');
+
+      reservePopup.classList.remove('is-thanks');
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.style.opacity = '';
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const openTrigger = event.target.closest('[data-popup-open="reserve"]');
+      const closeTrigger = event.target.closest('[data-popup-close]');
+
+      if (openTrigger) {
+        resetReservePopup();
+        return;
+      }
+
+      if (closeTrigger && closeTrigger.closest('.popup[data-popup="reserve"]')) {
+        window.setTimeout(resetReservePopup, 300);
+      }
     });
   })();
 
@@ -738,6 +768,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const media = document.querySelector(`.twist-media[data-id="${id}"]`);
       if (media) media.classList.add('active');
+    });
+  });
+
+  const genToken = (l = 20) =>
+    Array.from({ length: l }, () => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.charAt((Math.random() * 62) | 0)).join(
+      '',
+    );
+
+  const UTM_KEY = 'utmData';
+  const UTM_TTL = 24 * 60 * 60 * 1000;
+
+  const getUtmFromUrl = () => Object.fromEntries([...new URLSearchParams(location.search)].filter(([k]) => k !== 's'));
+
+  const saveUtm = (utm) =>
+    localStorage.setItem(
+      UTM_KEY,
+      JSON.stringify({
+        utm,
+        exp: Date.now() + UTM_TTL,
+      }),
+    );
+
+  const loadUtm = () => {
+    const d = JSON.parse(localStorage.getItem(UTM_KEY));
+    if (!d || d.exp < Date.now()) {
+      localStorage.removeItem(UTM_KEY);
+      return {};
+    }
+    return d.utm;
+  };
+
+  document.querySelectorAll('.popup-reserve-form').forEach((form) => {
+    form.insertAdjacentHTML('beforeend', `<input type="hidden" name="t" value="${genToken()}">`);
+
+    const utm = Object.keys(getUtmFromUrl()).length ? (saveUtm(getUtmFromUrl()), getUtmFromUrl()) : loadUtm();
+
+    Object.entries(utm).forEach(([k, v]) => form.insertAdjacentHTML('beforeend', `<input type="hidden" name="${k}" value="${v}">`));
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button.button');
+      const popup = form.closest('.popup[data-popup="reserve"]');
+
+      btn.disabled = true;
+      btn.style.opacity = 0.5;
+
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+
+          popup?.querySelector('.popup-window')?.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+          popup?.classList.add('is-thanks');
+        })
+        .catch((error) => {
+          console.error(error);
+          btn.disabled = false;
+          btn.style.opacity = '';
+        });
     });
   });
 });
