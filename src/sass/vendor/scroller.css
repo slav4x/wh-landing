@@ -184,6 +184,11 @@
   cursor: grabbing !important;
 }
 
+.is-dragging-content .scroller-content,
+.is-dragging-content .scroller-content * {
+  pointer-events: none !important;
+}
+
 .is-dragging-handle,
 .is-dragging-handle * {
   cursor: move !important;

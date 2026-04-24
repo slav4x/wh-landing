@@ -11,6 +11,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.masked').forEach((item) => new IMask(item, maskOptions));
 
+  (function initScrollerDragProtection() {
+    const dragThreshold = 8;
+    let activeScroller = null;
+    let startPoint = null;
+    let suppressClick = false;
+
+    document.querySelectorAll('.scroller a, .scroller img').forEach((element) => {
+      element.setAttribute('draggable', 'false');
+    });
+
+    document.addEventListener(
+      'pointerdown',
+      (event) => {
+        const scroller = event.target.closest('.scroller');
+
+        if (!scroller) return;
+
+        activeScroller = scroller;
+        startPoint = {
+          x: event.clientX,
+          y: event.clientY,
+        };
+        suppressClick = false;
+      },
+      true,
+    );
+
+    document.addEventListener(
+      'pointermove',
+      (event) => {
+        if (!activeScroller || !startPoint) return;
+
+        const deltaX = Math.abs(event.clientX - startPoint.x);
+        const deltaY = Math.abs(event.clientY - startPoint.y);
+
+        if (deltaX > dragThreshold || deltaY > dragThreshold) {
+          suppressClick = true;
+        }
+      },
+      true,
+    );
+
+    function resetPointerState() {
+      activeScroller = null;
+      startPoint = null;
+    }
+
+    document.addEventListener(
+      'pointerup',
+      () => {
+        window.setTimeout(() => {
+          suppressClick = false;
+        }, 0);
+
+        resetPointerState();
+      },
+      true,
+    );
+
+    document.addEventListener(
+      'pointercancel',
+      () => {
+        suppressClick = false;
+        resetPointerState();
+      },
+      true,
+    );
+
+    document.addEventListener(
+      'click',
+      (event) => {
+        if (!suppressClick) return;
+        if (!event.target.closest('.scroller')) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+      },
+      true,
+    );
+  })();
+
   (function initSteppers() {
     function clamp(value, min, max) {
       return Math.min(Math.max(value, min), max);
