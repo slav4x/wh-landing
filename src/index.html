@@ -282,7 +282,7 @@
 </section>
 
 <div class="reservation-buttons fixed">
-	<a href="javascript:;" data-popup-open="reserve" class="btn">Забронировать</a>
+	<a href="javascript:;" data-popup-open="reserve" class="reservation-btn">Забронировать</a>
 	<a href="#" class="reservation-tg"></a>
 </div>
 
@@ -354,7 +354,7 @@
 				center: [60.604293, 56.833664],
 				zoom: 15,
 			},
-			behaviors: [ 'zoom' ],
+			behaviors: [ 'zoom', 'drag' ],
 		});
 
 		const customization = await fetch('./customization.json').then((r) => r.json());
